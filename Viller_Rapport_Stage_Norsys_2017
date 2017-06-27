@@ -1,0 +1,729 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[frenchb]{babel}
+\usepackage{graphicx}
+\usepackage[T1]{fontenc}
+\usepackage{fancyhdr}
+\usepackage{graphics}
+\usepackage{verbatim}
+\setcounter{page}{1}
+\fancyhead[L]{\leftmark}
+\fancyhead[R]{}
+
+\fancyfoot[C]{}
+\fancyfoot[R]{\thepage}
+
+
+
+\begin{document}
+\begin{titlepage}
+		\newpage
+		\thispagestyle{empty}
+		\begin{center}
+			\includegraphics[scale=0.15]{images/logo_fac}	
+		\end{center}
+		\begin{center}
+			\vspace{0.3cm}
+			\large  
+			\textbf{Rapport de Stage Master 1 MIAGE classique}\\
+			\vspace{0.7cm} \large 
+			\vskip 0.2in
+		\end{center}
+		\fbox{%
+			\parbox{\textwidth}{%
+				\begin{center}
+					\begin{center}
+						\large \textsc{\textbf{ Création d'une plateforme web pour Télémaque }}
+					\end{center}
+					
+				\end{center}
+			}%
+		}
+		\begin{center}
+		    Plateforme web proposant des solutions de matchings
+		    \includegraphics[scale=1]{images/logo-norsys1}	
+		    \includegraphics[scale=1]{images/telemaques_logo}	
+		\end{center}
+		
+		\begin{flushleft}
+			\begin{center}
+			
+				\textbf{  Organisme d’accueil : }
+				\hspace{0.1cm}Norsys Easymakers \\
+					\textbf{Réalisé par} \\
+					\hspace{0.1cm} VILLER Nathanaëlle \\
+					\textbf{Encadré par}\\
+				 \hspace{0.1cm} FROMENTIN Régis \\
+			
+			\end{center}
+		\end{flushleft}
+	
+		\begin{center}
+			\vspace{0.1cm} \textbf{Avril - Juin 2017}
+		\end{center}
+		
+	\newpage
+
+	
+
+%\title{Création d'une plateforme web pour Télémaque}\\
+%\author{Stagiaire : Nathanaëlle VILLER \\ Maître de stage : Régis Fromentin }
+%\date{Avril - Juin 2017}
+
+
+%\begin{document}
+
+%\maketitle
+%\newpage
+\thispagestyle{empty}
+\section*{Remerciements}
+Je remercie Norsys pour son accueil chaleureux ainsi que tous mes collègues qui m'ont aidée, soutenue et encouragée de près ou de loin pendant mon stage. \\
+Je remercie aussi Régis Fromentin et Télémaque pour la confiance qu'ils m'ont accordée pour ce projet. 
+\newpage
+\tableofcontents
+\thispagestyle{empty}
+\end{titlepage}
+\newpage
+
+	\pagenumbering{arabic}
+\addcontentsline{toc}{section}{Introduction}
+\section*{Introduction}
+\textit{Dans ce dossier va vous être présenté l'application de solution de matching pour l'Institut Télémaque}
+\\ \\
+J'ai effectué mon stage dans la société Norsys. J'ai travaillé sur un projet pour une association nommée Institut Télémaque. Le projet consiste en un site web permettant de recueillir les réponses aux formulaires de salariés et étudiants pour ensuite proposer des solutions de matching salarié/étudiant en respectant certains critères. 
+\\ \\
+La gestion du projet ainsi que le développement ont été géré par moi-même sous la tutelle mon maître de stage : Regis Fromentin et de 2 de mes collègues. 
+\\ \\
+Durant mes 3 mois de stage à plein temps, j'ai pu travailler et découvrir des techniques de gestion de projet tout en agrandissant mes connaissances dans le développement de site web. 
+J'ai travaillé sur le back et le front office du projet. 
+\\ \\
+En premier lieu je vais vous présenter la société Norsys ainsi que le client : l'Institut Télémaque. 
+\\ \\
+ Ensuite je vous parlerai de l'étude et de la mise en place du projet. Des différents choix techniques ainsi que des retours reçus par le client. 
+ \\ \\ 
+ Enfin je présenterai en détails les parties développées tout en explicitant les problèmes rencontrés et les solutions utilisées. 
+\newpage
+\addcontentsline{toc}{section}{Présentation de l'entreprise Norsys}
+\section*{Présentation de l'entreprise Norsys}
+\begin{center}
+    \includegraphics{images/logo-norsys1.jpg}
+\end{center}
+Norsys est une ESN (anciennement SSII), créée en 1994, spécialisée dans le conseil en organisation et le management des ressources humaines. 
+Le siège de Norsys se situe à Ennevelin dans le 59 (Nord) et compte 5 agences situées à Paris, Lyon, Sophia Antipolis, Nantes et Marrakech. 
+Norsys compte environ 450 employés dont environ 100 gérés par l'antenne de Paris. 
+\\ \\
+La vision de norsys : développer une performance globale avec, au-delà de sa finalité économique, une finalité humaine, sociétale et environnementale. 
+\\ \\
+La fondation Norsys agit dans les domaines suivants :
+\begin{itemize}
+   \item L'éducation 
+    \item L'accès à l'emploi
+    \item L'environnement
+    \item Le mécénat de compétences informatiques, les IT Solidaires
+\end{itemize}
+Ses principes de fonctionnement s'appuient sur :
+\begin{itemize}
+    \item L’implication des salariés : le bureau exécutif est constitué de 8 salariés, 10\% des collaborateurs du groupe s’impliquent directement dans les actions de la fondation
+\item Une organisation participative : les projets sont notamment proposés et sélectionnés par les salariés
+\item Une démarche partenariale : tout projet doit associer la société civile, association, ONG, établissement public…
+\end{itemize}
+Ses modes d'intervention : 
+\begin{itemize}
+\item Mécénat de compétences notamment en informatique (refontes de sites, bases de données, ... => projets IT Solidaire)
+\item Parrainage et bénévolat de salariés dans les régions concernées (RH, formations au numérique, interventions métiers)
+\item Mécénat financier, achat de matériel dans la mesure où ceux – ci représentent un complément des autres aides
+\item Le mécénat financier seul est octroyé dans le cadre du concours annuel “Les trophées de la fondation Norsys” organisé en début d’année et des “Bikers Solidaires” en Mai.
+\end{itemize}
+
+
+\begin{center}
+ \textit{Annexe 1 page 2 des annexes : Organigramme du groupe Norsys}
+ \\
+    \includegraphics[angle=90,scale=0.8]{images/organigramme_Norsys.png}
+    Organigramme de l'agence de Paris 
+
+   
+\end{center}
+
+
+\newpage
+\addcontentsline{toc}{section}{Présentation du client}
+\section*{Présentation du client}
+	\begin{center}
+		    \includegraphics[scale=1]{images/telemaques_logo}	
+		\end{center}
+		Association créée en 2005, l’Institut Télémaque relance l’ascenseur social dès le collège en accompagnant des jeunes méritants et motivés de milieu modeste par le biais d’un double parrainage « école-entreprise ».
+		\\
+		L'Institut Télémaque a pour objectif d'aider les jeunes de milieu modeste à viser plus loin et plus haut pour leurs objectifs de carrière tout en leur permettant d'accroître leur culture générale. 
+		
+		Pour cela l'Institut Télémaque met en place un double parrainage : 
+		\begin{center}
+		    \includegraphics[scale=0.5]{images/double_parrainage}	
+		\end{center}
+		
+		Aujourd’hui l’Institut Télémaque accompagne des jeunes en région Île-de-France, Hauts-de-France, Auvergne-Rhône-Alpes et très prochainement en Occitanie.
+
+        Dans le but de toucher un maximum de jeunes pour lutter contre le déterminisme social, l’Institut Télémaque souhaite se développer sur de nouveaux territoires géographiques dans les années à venir.
+        
+        Durant les 3 mois de stage effectués j'ai été en relation avec Sihem Boukada (Responsable de la région Ile de France), Marine Guillet (Chargée de partenariats en Île-de-France et national), Claire Taillardat (Chargée de parrainages et animatrice de communauté en Île-de-France) et Lydia Metzger (Service Civique). 
+        
+         \textit{Annexe 2 page 2 des annexes : Organigramme de l'Institut Télémaque}
+\newpage
+\section{Présentation du projet}
+\subsection{Présentation de la mission}
+\subsubsection{Pourquoi ce projet ?}
+Dans le cadre du partenariat entre Norsys et l'Institut Télémaque 2 salariés de l'agence de Paris ont été sélectionnés pour devenir parrains : Eric Figueiras et Lorraine Le Jan. Dans les échanges entre les 2 parties du partenariat, Norsys a soulevé un besoin de Télémaque quant à la gestion des matchings entre les parrains et filleuls. Norsys a donc proposé de mettre en place un projet grâce à la fondation dans le cadre de l'IT solidaires. 
+\\ \\
+\textit{La fondation coordonne la mise à disposition par l’entreprise Norsys de développeurs, chefs de projet, consultant(e)s sur leur temps de travail au profit d’un projet d’intérêt général proposé par une association partenaire. Le mécénat de compétences permet de fédérer les collaborateurs et de leur faire découvrir l’engagement sociétal.}
+\\ \\ 
+Le projet est porté par Regis Fromentin. Sa réalisation a été encadrée par ce dernier et les 2 parrains. 
+\subsubsection{Recueil des besoins}
+J'ai été briefée rapidement par mon tuteur et j'ai eu la matinée pour me préparer à la première réunion avec Télémaque. Par rapport aux informations que j'avais reçues et à la documentation fournie par le site de l'Institut Télémaque je me suis préparée à mon rendez-vous. J'ai essayé de réfléchir au rendu projet pour préparer mes diverses questions. 
+\\
+L'Institut Télémaque nous (mon tuteur et moi-même) a présenté leur façon de procéder puis leur problématique et leurs attentes. Suite à cette présentation nous avons eu un temps d'échange où j'ai pu poser mes questions. 
+\subsubsection{La problématique}
+Actuellement l'Institut Télémaque passe des entretiens auprès des jeunes dans les écoles et sélectionne les plus motivés. De même des "recrutements" sont faits dans les entreprises partenaires. \\
+Ensuite les futurs parrains et filleuls remplissent un formulaire de type GoogleForm. Télémaque récupère ainsi leurs informations générales, leurs localisations, les centres d’intérêts, les préférences de genre, les préférences de filières (pour les parrains) et toute information complémentaire sur les souhaits et envies des parrains et filleuls. 
+A partir de ces résultats Télémaque récupère des fichiers Excel qui lui permette de stocker toutes les données de leurs filleuls et parrains. 
+Toute la gestion des données passent par des fichiers Excel (nouvel onglet, copié, collé, etc …). \\
+Pour faire un matching, la personne qui a fait les entretiens avec le filleul va essayer de trouver le parrain le plus compatible en fonction de critères tel que le choix de préférence de genre, la localisation, les centres d’intérêts, … 
+Mais la mise en forme d'Excel n'est pas la plus optimale pour faire des comparaisons entre la liste des parrains et des filleuls. C'est un travail long et fastidieux.
+
+\subsubsection{Les attentes du projet}
+L'Institut Télémaque souhaiterait un site web qui récolterait les réponses des formulaires, qui permettrait de parcourir les profils et qui serait force de propositions en terme de matching entre parrain et filleul. 
+Les propositions de solution de matching entre parrain et filleul seront faites en fonction des critères suivants : 
+\begin{itemize}
+\item	Préférence de genre (homme/femme), il s’agit d’un critère disqualifiant.
+\item	Localisation, en proposant le choix d’une zone dans la région du parrain. Lors du remplissage du formulaire le parrain remplit sa région et l’outil lui proposera différentes zones prédéfinies par Télémaque avec une carte pour une meilleure visualisation et le parrain choisit la ou les zone(s) qu’il préfère. Les établissements de chaque étudiant sont dans une zone. 
+\item	Centres d’intérêts, parmi une liste disponible filleul et parrain choisiront un à plusieurs choix. De plus ils pourront donner plus d’information sur leur centre d’intérêt dans une zone de texte. Exemple : J’aime le foot mais est ce que j’y joue ou est-ce que j’aime le regarder ? 
+\item	Préférence de filière pour les parrains, avec un petit rappel des filières le parrain pourra choisir s’il est plus filière professionnelle ou générale ou indifférent à la question. 
+\item	Choix de mots clefs dans une liste en fonction du projet professionnel du filleul et du parcours professionnel du parrain. 
+\end{itemize}
+
+\subsection{Analyse du projet}
+\subsubsection{Définition des différents cas d'utilisation }
+\begin{itemize}
+\item Filleul\\
+Remplir le formulaire étudiant. Rentrer ses informations pour créer sa fiche. 
+Le formulaire doit comprendre l’upload d’une photo.
+\item Parrain\\
+Remplir le formulaire parrain. Rentrer ses informations pour créer sa fiche. 
+Le formulaire doit comprendre l’upload d’une photo.
+\item Utilisateur Télémaque
+\begin{itemize}
+\item	Connexion et déconnexion pour pouvoir accéder aux fonctionnalités de l’outil. 
+\item	Faire une recherche pour trouver un parrain ou un filleul. 
+\item	Accéder au profil d’un parrain ou d’un filleul, afficher ses informations
+\item	Lancer le matching pour un parrain ou un filleul. Pouvoir faire le matching dans les deux sens permet de faire des comparaisons. Parrain A est peut être le parrain le plus compatible pour le filleul A mais le filleul A n’est peut-être pas le filleul le plus compatible avec le parrain A. On juge la compatibilité en pourcentage de critère identique. Chaque critère aura un poids plus ou moins important pour le matching. 
+
+		\item	Pouvoir afficher en détails le matching et donc les informations des deux personnes. Informations permettant à l’utilisateur de vérifier que le matching va coller, notamment par rapport aux compléments des centres d’intérêts. 
+\item	Valider un matching proposé par l’outil. 
+\item	Créer un matching manuellement en sélectionnant un parrain et un filleul. 
+\item	Remplir la base de données avec un fichier Excel. 
+\item	Exporter la base de données en fichier Excel. Exemple : Les parrains sans filleul.
+\item	Promouvoir un parrain, certains parrains peuvent avoir 2 filleuls au lieu d’1 seul. 
+\item	Pouvoir rajouter un des choix dans les listes de réponses des formulaires. 
+\end{itemize}
+\end{itemize}
+
+\begin{center}
+		    \includegraphics[scale=0.6]{images/cas_utilisation}	
+		\end{center}
+	
+
+Après avoir défini les différents cas d'utilisation j'ai rédigé des "user story". Il s'agit d'une phrase simple dans le langage commun permettant de décrire avec suffisamment de précision le contenu d'une fonctionnalité à développer. La phrase contient généralement trois éléments descriptifs de la fonctionnalité : Qui ? Quoi ? Pourquoi ?.
+Grâce à cela j'ai pu discerner les différentes tâches à réaliser et remplir mon tableau Trello. Ensuite j'ai priorisé les différentes tâches avec un code couleur sur ce dernier. 
+\begin{center}
+		    \includegraphics[scale=0.5]{images/taches1}	
+		    \includegraphics[scale=0.8]{images/prioriteTache}	
+		\end{center}
+		
+		
+
+\subsubsection{Choix de gestion et techniques}
+\begin{center}
+		    \includegraphics[scale=0.05]{images/trello-logo-blue}	
+		\end{center}
+		\textbf{Trello}\\
+Il s’agit d’un outil de gestion des tâches qui peut très bien s’utiliser seul ou en équipe. Grâce à un code couleur on peut donner des catégories aux tâches, on peut aussi mettre une échéance ou une checklist, etc … Cela permet un suivi très simple du projet tout en étant écologique (comparé à la version avec des post-it). De plus n’importe qui, suivant le projet, pourra voir son avancée au fur et à mesure. 
+Avec la version client, les clients auront un suivi compréhensible sous les yeux des projets. 
+\\ \\
+\textit{Trello est un outil de gestion de projet en ligne, lancé en septembre 2011, et inspiré par la méthode Kanban de Toyota. Il est basé sur une organisation des projets en planches listant des cartes, chacune représentant des tâches. Les cartes sont assignables à des utilisateurs et sont mobiles d'une planche à l'autre, traduisant leur avancement.}
+\\ \\
+\begin{center}
+		    \includegraphics[scale=0.09]{images/symfony_black_03}	
+		\end{center}
+			\textbf{Framework Symfony}\\
+Le site actuel de Télémaque est en wordpress (PHP) et sur OVH (hébergeur). 
+J'ai dû réfléchir aux différentes possibilités de dévoleppement du site et poposer un choix de technologies pour le projet. 
+L'objectif étant que je fasse aussi des découvertes en termes de technologies pour que j'acquiers des nouvelles expériences et que le projet soit formateur. 
+J'ai donc rapidement pensé au framework Symfony. J'ai pu par le passé travailler dans un site développé avec Symfony, mais n'ayant travaillé que sur du front et sur un site déjà créé je n'ai pas pu apprendre les mécaniques du framework qui me paraissaient pourtant fortes. J'ai donc pensé que ce serait une très bonne occasion pour moi de découvrir la force de Symfony. 
+\\ \\
+\textit{Symfony est un ensemble de composants PHP ainsi qu'un framework MVC libre écrit en PHP. Il fournit des fonctionnalités modulables et adaptables qui permettent de faciliter et d’accélérer le développement d'un site web.}
+\\ \\ 
+
+Les versions disponibles sont 2.7, 2.8, 3.2, 3.3 dev. 
+La 2.7 est trop vieille et dépassée. Si on avait commencé dessus la migration aurait été difficile. La 2.8 est LTS (Long Term Support) et entre la 2.8 et la 3.x il y a peu de différence. J'ai pensé qu'il était mieux de prendre une version LTS avant de faire une migration, car les version 3.2 et 3.3 deviendront peut être obsolètes. 
+
+
+\begin{center}
+		    \includegraphics[scale=0.4]{images/bootstrap}	
+		\end{center}
+			\textbf{Framework Boostrap}\\
+Pour la partie front il m'est naturellement venu à l'esprit d'utiliser Boostrap. Cela permet d'avoir une partie front belle et agréable visuellement très facilement. 
+Les versions disponibles sont la 3.3.7 et la 4.0.0-alpha6. Puisque la version 4 est encore en alpha j'ai préféré prendre la 3.3.7 qui est une version stable. \\
+Avec Bootstrap on trouve facilement des thèmes open source et celui qui a retenu mon attention est AdminLTE.\\ \\
+\textit{Bootstrap est une collection d'outils utile à la création du design (graphisme, animation et interactions avec la page dans le navigateur ... etc. ...) de sites et d'applications web. C'est un ensemble qui contient des codes HTML et CSS, des formulaires, boutons, outils de navigation et autres éléments interactifs, ainsi que des extensions JavaScript en option. C'est l'un des projets les plus populaires sur la plate-forme de gestion de développement GitHub.}
+\\ \\
+\begin{center}
+		    \includegraphics[scale=0.1]{images/wamp}	
+		    \includegraphics[scale=0.15]{images/logo-og}
+		    \includegraphics[scale=0.4]{images/Mariadb}
+		\end{center}
+			\textbf{Serveur et base de données}\\
+
+Au début de ma recherche j'ai pensé à utiliser wamp pour héberger en local le projet et ainsi bénéficier de phpMyAdmin et avoir une base de données en MySQL. J'ai aussi pensé à Firebase qui est une base de données en ligne. Mais c'est une idée qui a vite été abandonnée, la complexité que je souhaitais pour mon projet était pour le développement et non pas pour la gestion de la base de données. 
+Mais au cours de mes recherches j'ai découvert que MySQL n'était plus gratuit et son équivalent était MariaDB. Je me suis donc intéréssée à MariaDB. Et il se trouve que MariaDB est compatible avec phpMyAdmin, c'est donc une solution intéressante.  
+\\ \\
+\textit{WampServer est une plate-forme de développement Web sous Windows permettant de développer des applications Web dynamiques avec Apache2, PHP et de MySQL.}\\ \\
+\textit{phpMyAdmin (PMA) est une application Web de gestion pour les systèmes de gestion de base de données MySQL réalisée en PHP.}\\ \\
+\textit{MariaDB est un système de gestion de base de données édité sous licence GPL. Il s'agit d'un fork communautaire de MySQL.}\\ \\
+\begin{center}
+		    \includegraphics[scale=0.1]{images/hoa}	
+		\end{center}
+			\textbf{Moteur de règles}\\
+
+Pour la partie du matching mon maître de stage voulait que j'utilise un moteur de règles. N'en ayant jamais utilisé c'était une très bonne occasion pour découvrir. Un de mes collègues m'a conseillé Ruler qui fonctionne avec PHP5.3+ qui est développé par HOA. L'un des plus du moteur de règles est que cela permet d'éviter des longueurs de script PHP. \\ \\
+\textit{Un moteur de règles est avant tout un moteur d’exécution qui prend des règles d’un côté, des faits de l’autre et qui les rapproche pour obtenir un résultat correspondant aux attentes exprimées dans les règles.}
+\\ \\
+\begin{center}
+		    \includegraphics[scale=0.1]{images/php-1}	
+		    \includegraphics[scale=0.2]{images/twig_ezno_default}
+		\end{center}
+			\textbf{Language de programmation}\\
+Au vue des choix des technologies il a été choisi de développer le back du site en PHP et pour un souci de compatibilité la version 7 a été choisie. 
+De plus Symfony permet d'utiliser le language Twig, c'est grâce au Twig que l'on peut transmettre les données du contrôleur en PHP aux interfaces en HTML, aux fichiers CSS ou encore aux fichiers JavaScript. 
+
+\subsubsection{Elaboration du planning}
+Pour élaborer le planning il m'a fallu réfléchir au temps que prendrait chaque tâche. Et c'est quelque chose de vraiment pas facile. Pour m'aider mes collègues m'ont proposé de faire un poker planning. Un poker planning permet à chaque membre d'une équipe de projet d'estimer le temps qu'il faudrait pour réaliser chaque tâche. Ainsi chacun donne son estimation et peut argumenter sur son choix de durée. Suite au débat on peut ainsi définir la durée d'une tâche. Je ne connaissais pas cette méthode et je l'ai beaucoup appréciée. Elle permet vraiment à chaque personne de s'exprimer et de défendre son point de vue. C'est donc une excellente découverte pour moi. 
+\\ \\
+Dans mon cas je suis seule à travailler sur mon projet. Cela me permet de découvrir chaque partie d'un projet. 3 de mes collègues ont donc joué le rôle de membres de mon équipe sur le projet et j'ai joué le rôle du chef de projet. J'ai ainsi défini et expliqué chaque tâche pour que chacun puisse estimer une durée. Leur avis m'a ainsi permis de mieux cerner les enjeux de chaque tâche. Certaines fois je n'avais même pas pensé à certaines problématiques. C'est donc une expérience très formatrice pour moi. 
+\\ \\
+Suite au poker planning j'ai pu élaborer un diagramme de gantt sur le projet. Etant la seule ressource disponible sur la réalisation du projet, la chaîne critique était facile à déduire. 
+\begin{center}
+		    \includegraphics[scale=0.4]{images/gantt1_1.png}
+		    \includegraphics[scale=0.4]{images/gantt1_2.png}
+		\end{center}
+
+\subsection{Création des wireframes et structure du site}
+Une fois mon planning fini je me suis attelée à faire des wireframes pour présenter ce que j'avais en tête à Télémaque, afin que l'on soit bien d'accord sur les différentes pages du site et de la navigation, ainsi que des informations à mettre et comment. Pour réaliser les wireframes j'ai utiliser le logiciel : Axure RP Pro 5.6.
+\\
+Pour la réalisation des wireframes je me suis basée sur les notes que j'avais prises lors de notre entrevue avec Télémaque et sur les 2 formulaires google form utilisés par Télémaque. 
+
+\subsubsection{Les formulaires}
+Pour les deux formulaires j'ai essayé de regrouper les informations ensemble. En effet, dans les formulaires google form utilisés pour le moment par Télémaque les questions sont un peu mélangées. Donc j'ai essayé de les regrouper au mieux et de structurer l'ordre des éléments. 
+\begin{center}
+		    \includegraphics[scale=0.6]{images/wireframe1}	
+		\end{center}
+		
+		Les formulaires seront accessibles par un lien unique communiqué par Télémaque aux personnes concernées. Cela a pour but d'éviter que des bots parcourant le site web ne trouvent les formulaires et ne spamment la base de données. 
+\subsubsection{Connexion et déconnexion}
+Le site sera accessible uniquement par Télémaque. Chaque branche aura un identifiant et code d'accès paramétré en fonction de sa région. 
+L'outil sera disponible uniquement pour les membres de l'association. 
+\subsubsection{Page d'accueil et statistiques}
+Une fois connecté l'utilisateur Télémaque aura accès à une page d'acceuil avec des statistiques basées sur les données contenues dans la base de données. Par exemples : le nombre de parrain ou le nombre de matching. 
+\begin{center}
+		    \includegraphics[scale=0.7]{images/wireframe2}	
+		\end{center}
+\subsubsection{Recherche des parrains et filleuls}
+L'onglet de la recherche permettra de lister les parrains ou filleuls ou salariés voulant aider Télémaque, en fonction de leur région et de s'ils sont déjà matchés ou non. Un code couleur et/ou un icon permettront de savoir si la personne est déjà matché ou non. Une zone de recherche sera disponible pour chercher une personne en particulier par son nom ou prénom.
+ \textit{Annexe 3 p 3 des annexes : Wireframe de la recherche}
+
+\subsubsection{Profil}
+Lors du clic sur une personne dans la zone de recherche, la page de profil de la personne chargera. Le profil retrace les éléments de réponses donnés par la personne. En fonction de s'il s'agit d'un parrain ou d'un filleul certaines actions seront disponibles. \\ \\
+Un parrain pourra être promu, c'est à dire qu'il pourra avoir un second filleul, et donc être à nouveau disponible dans la recherche de matching. 
+
+\subsubsection{Recherche d'un matching}
+Lorsqu'on lance la recherche d'un matching, via un bouton sur le profil d'un parrain ou d'un filleul non matché, l'application va sélectionner les 5 meilleures personnes pouvant correspondre aux matchings. Et pour chacune de ses personnes l'application va chercher quelle est le meilleur matching possible. 
+Grâce un code couleur on pourra différencier chaque résultat en fonction de sa complémentarité. 
+\begin{center}
+		    \includegraphics[scale=0.5]{images/wireframe4}	
+		\end{center}
+\subsubsection{Profil d'un matching et validation}
+Lors d'un clic sur un des résultats, la page du profil du matching s'ouvrira permettant de comparer les réponses du parrain et du filleul, et de valider et créer le matching, si cela est souhaité . 
+\subsubsection{Créer un matching}
+De plus, l'utilisateur Télémaque pourra créer un matching entre un filleul et un parrain en renseignant le nom des deux personnes souhaitées. 
+\subsubsection{Modification des listings des formulaires}
+Un formulaire sera disponible pour rajouter des réponses aux questions des formulaires pour les futurs parrains et filleuls. Comme par exemple le nom d'une nouvelle société partenaire. 
+\subsubsection{Export et Import}
+Il sera possible de télécharger la liste des parrains ou des filleuls sous un format Excel et d'en importer pour compléter la base de données. 
+\subsection{Retour client}
+Avant de passer à la réalisation du projet j'ai pris rendez vous avec l'Institut Télémaque pour leur présenter les wireframes et valider avec eux la structure du site. Je suis donc allée dans leurs locaux pour leur présenter mon travail. J'ai pu faire la rencontre de plusieurs membres de l'association. Ils m'ont tous remerciée du travail que j'allais faire pour eux, ce qui m'a beaucoup motivée. \\ 
+La présentation de mon travail s'est très bien passée. Mes interlocutrices étaient très réceptives, elles ont posé plusieurs questions et on a discuté ensemble des modifications qui pourraient être envisageables. Elles ont été satisfaites de la réunion et j'ai ainsi pu me lancer dans le développement. 
+\section{Réalisation de la plateforme web}
+\subsection{Mise en place de l'environnement de développement}
+Pour développer le projet j'ai utilisé le logiciel PhpStorm 2017.1.3. 
+Pour mettre en place le serveur en local et mon environnement de développement je me suis aidé d'un tutoriel d'OpenClassRoom sur Symfony. Cela m'a permis de bien comprendre comment fonctionne Symfony et comment l'utiliser.
+En voulant installer et paramétrer wamp avec MariaDB j'ai rencontré beaucoup de problèmes et il m'a été impossible de réussir à lier phpMyAdmin avec MariaDB. Un de mes collègues m'a donc proposé d'utiliser DBeaver. 
+\\ \\ 
+\textit{DBeaver est un logiciel gratuit de gestion de bases de données qui supporte nativement un très grand nombre de SGBD, parmi lesquels MySQL, MSSQL, Oracle, SQLite, Sybase, Firebird, PostgreSQL, HSQLDB, Teradata …. La liste est encore très longue.}
+\begin{center}
+		    \includegraphics[scale=0.4]{images/beaver-head}	
+		\end{center}
+
+DBeaver supporte aussi MariaDB nativement. La configuration de Symfony avec ma base de données sur DBeaver a été simple et rapide. Ce n'était pas ce que j'avais prévu au départ mais ce fut une bonne solution. J'ai découvert un outil vraiment pratique, performant et intuitif.\\ \\
+Au début j'avais créé ma base de données sur DBeaver, en suivant le raisonnement d'un site en PHP  (qui va interroger le base de données avec des script). Hors, avec Symfony toute la gestion de la base de données se fait en lignes de commandes grâce à Doctrine. \\ \\
+\textit{Doctrine est un ORM (couche d'abstraction à la base de données) pour PHP. Il s'agit d'un logiciel libre sous licence GNU LGPL.} \\ \\
+En plus de générer ma base de données cela m'a aussi généré des entités -> des classes en PHP. Et toute modification apportée à ces entités modifie la base de données. Cela permet un gain de temps considérable. 
+\\ \\ 
+Il m'a fallu un peu de temps pour comprendre comment bien mettre en place la structure Symfony et modifier différents paramètres mais j'ai reçu de l'aide de collègues et camarades ce qui m'a permis d'avancer et de comprendre mes erreurs. 
+\subsection{Thème et barre de navigation}
+La structure des pages d'un site avec Symfony est similaire à un ensemble de poupées russes. On crée une page principale où l'on définit le thème du site. Pour ma part j'en ai fait 2, une pour la partie du site lorsque l'on est pas connecté et une autre pour quand on est connecté. La seule différence entre les deux sont les boutons de la barre de navigation. (J'aurais également pu faire une page principale qui, en fonction de l'état de connexion, affiche l'une ou l'autre des barres de navigation mais cela me semblait moins propre.) \\ \\
+Dans mes deux pages principales j'ai prédéfini des blocs pour le CSS, le corps de la page et le JavaScript. Ainsi chacune de mes pages hérite de la page principale correspondante. Dans le bloc CSS j'importe les fichiers CSS nécessaires, idem pour le Javascript. Dans le bloc du corps je mets le contenu de ma page. \\ \\
+Pour certaines pages, puisque l'affichage ou le chargement des données change, j'inclus d'autres fichiers html.twig en fonction de s'il s'agit d'un parrain ou d'un filleul. Ainsi mon code est épuré et je n'ai pas de code inutile dans mes pages. \\ \\ 
+En \textit{annexe 4 (page 3 des annexes)} vous pourrez trouver un exemple très parlant, il s'agit du fichier de génération des profils. Les profils parrains, filleuls et personnes voulant aider Télémaque sont générés grâce à ce fichier. Tout est géré par le langage Twig, jusqu'au transfert des données. 
+
+\subsection{Formulaires}
+La génération d'un formulaire avec Symfony est vraiment pratique lorsqu'on le maitrise, mais au début cela m'a vraiment posé des problèmes. Je dirai même que cela m'a un peu retourné le cerveau. Mon erreur était de penser à un formulaire créé de façon basique en PHP alors que Symfony permet de créer très rapidement et facilement des formulaires pour les différentes entités qui ont été créées. 
+Voici un exemple de code générant des éléments de formulaire en PHP avec Symfony : 
+\begin{verbatim}
+$builder
+    ->add('nomFilleul', TextType::class,array('label' => 
+    'Nom *'))
+    ->add('emailFilleul', EmailType::class,array('label' => 
+    'E-mail *'))
+    ->add('rythmeAltFilleul', TextType::class,array('label' => 
+    'Rythme d\'alternance :', 'required' => false)
+    ->add('familleFilleul', 'choice', array(
+        'choices' => array(
+            true => "Oui",
+            false => "Non",
+        ),
+        'expanded' => true,
+        'multiple' => false,
+        'label' => 'As tu des frères et soeurs ? *'
+     ))
+    ->add('themes', EntityType::class, array(
+        'class'        => 'MCTNMatcherBundle:ThemeProfessionnel',
+        'choice_label' => 'nomTP',
+        'multiple'     => true,
+        'expanded' => true,
+        'label' => 'Thèmes professionnel *',
+        'required' => true
+    ));
+
+\end{verbatim}
+La gestion de l'affichage se fait aussi de façon particulière grâce au langage Twig : 
+\begin{verbatim}
+<div class="form-group">
+        {{ form_label(form.nomFilleul, "", {'label_attr': {'class': 
+        'col-sm-2 control-label'}}) }}
+        {{ form_errors(form.nomFilleul) }}
+      <div class="col-sm-10">
+          {{ form_widget(form.nomFilleul) }}
+      </div>
+    </div>
+\end{verbatim}
+\begin{center}
+		    \includegraphics[scale=0.4]{images/exemple_form_filleul}	
+		\end{center}
+		J'ai eu du mal à bien comprendre comment tout cela fonctionnait ce qui m'a fait perdre un peu de temps. Mais comme j'avais commencé par le formulaire salarié, qui est plus complexe que celui étudiant car il a des spécificités, j'ai pu rattraper le temps perdu en réalisant le second formulaire. Une fois que j'ai eu bien assimilé comment Symfony traitait les formulaires ce fut très simple d'en faire un second. 
+		\\ \\
+Le gros avantage de Symfony sur cette partie c'est l'interaction avec la base de données. Tout est géré et aucune requête pour l'insertion des nouvelles données n'est à faire. 
+\\ \\ 
+\textit{Exemple en annexe 5 page 5 des annexes.}
+\\ \\
+De plus Symfony propose un large panel de gestion des erreurs dans un formulaire ainsi que la possibilité de créer soi-même certains messages d'erreur en fonction de différents paramètres. De ce fait, pas besoin d'utiliser le JavaScript pour vérifier les informations envoyées par l'utilisateur, ou de faire de nombreux tests sur les données reçues en PHP. Cela permet aussi de gagner du temps. 
+\\ \\ 
+J'ai rencontré un souci lors de la création du formulaire pour les salariés. En effet, en fonction de leur région la carte et la liste des zones doivent changer. Lors de la récupération des éléments par Symfony, et de la génération de la liste des zones, je récupérais toutes les zones. Je n'ai pas trouvé comment lui faire afficher uniquement les zones de la région sélectionnée. J'ai donc essayé de trouver une alternative en JavaScript. J'ai finalement réussi à modifier les plans en fonction de la région cependant je suis restée bloquer sur la liste des zones car je n'arrivais pas à récupérer les zones dans la base de données. Suite au conseil d'un collègue je me suis renseignée sur l'Ajax. 
+\\ \\ 
+\textit{L'architecture informatique Ajax (acronyme d'Asynchronous Javascript and Xml) permet de construire des applications Web et des sites internet dynamiques interactifs sur le poste client en se servant de différentes technologies ajoutées aux navigateurs (entre 1995 et 2005).}
+\\ \\ 
+Grâce à l'Ajax j'ai pu faire appel à une fonction de mon contrôleur qui renvoie les données dont j'ai besoin. Cela me permet d'interroger la base de données et de récupérer la liste des zones en fonction de la région sélectionnée et ensuite de les afficher. 
+\\ \\
+\textit{Le code se trouve en annexe 6 page 6 des annexes.}
+
+\subsection{Recherche des parrains et filleuls}
+La recherche propose principalement une recherche par parrain, filleul ou personne voulant apporter de l'aide à Télémaque. Les parrains et filleuls peuvent être triés en fonction de s'il sont matchés ou non ou peu importe. De plus, on peut les trier en fonction de la zone de sélection pour les parrains et de la zone de l'école pour les filleuls.\\ \\ La liste des zones disponibles est défnie en fonction de la région de l'utilisateur de Télémaque connecté à l'application. En effet un utilisateur d'Occitanie ne s'occupera pas des parrains et filleuls d'Île-de-France, il n'a donc aucun d'intérêt à les voir. 
+\\ \\
+L'affichage doit permettre de voir rapidement quels sont les utilisateurs matchés ou non. Lors de ma dernière entrevue avec Télémaque ont m'a demandé que le matching se fasse en 2 étapes. Une première qui dit que le parrain et le filleul pourraient être compatibles et qu'on les met ensemble en vue d'un premier rendez-vous. A cette étape ils ne sont plus disponible pour le matching. Une fois le rendez vous fait il faudra confirmer le matching ou l'annuler en fonction du déroulement du rendez-vous. Si il confirme la pré-sélection, les deux personnes sont matchées, sinon elles seront considérées comme de nouveau disponibles pour un matching.
+\\ \\ 
+De ce fait un code couleur et une icône ont été choisis pour montrer rapidement que les personnes sont dans l'un des 3 états : 
+\begin{itemize}
+\item Aucune couleur : Non matché
+\item Bleu : En attente de validation 
+\item Orange : Matché
+\end{itemize}
+
+\begin{center}
+		    \includegraphics[scale=0.5]{images/recherche.png}	
+		\end{center}
+Tous les changements d'affichage en fonction de la sélection sont gérés en JavaScript. De plus si le bouton "Autre" est coché, la sélection pour trier les personnes en matché ou non est impossible. 
+La zone de recherche doit permettre de chercher par le nom ou prénom une personne. Elle n'est pas encore fonctionnelle car ce n'était pas une priorité dans le projet. C'est une fonctionnalité qui sera rajouté durant la suite de mon stage. Malgré tout je l'ai quand même rendu visible pour montrer à Télémaque où elle sera située et à quoi elle ressemblera afin qu'ils puissent me faire des retours là-dessus. Si elle était amenée à changer de place ou de format cela changerait l'affichage de cette page. 
+\\ \\ 
+Lors du clic sur l'une des personnes on accède à son profil. 
+Pour un souci de confidentialité les noms des personnes ont été masqués.
+\subsection{Profil}
+Le profil permet de voir les réponses au formulaire de la personne sélectionnée et d'effectuer différentes actions en fonction de s'il s'agit d'un parrain, d'un salarié non parrain ou d'un filleul. De même les actions disponibles prennent en compte si le parrain ou filleul est déjà matché. 
+Les différents boutons sont : 
+\begin{itemize}
+\item Chercher un matching
+\item Créer un matching 
+\item Télécharger le profil 
+\item Voir le matching 
+\item Promouvoir le parrain 
+\end{itemize}
+En plus d'afficher les différentes réponses de la personne, il est aussi affiché si elle est matché et si oui avec qui. 
+\subsection{Recherche d'un matching}
+Cette fonctionnalité est la plus grosse et la plus importante du projet. Lorsque je l'ai mise sur mon planning j'avais définit une dizaine de jours pour la mettre en place. Mais une telle tache aurait du être découpée en sous-tâches. De ce fait, avant de commencer le développement j'ai définit en étape cette grande tâche. 
+\begin{itemize}
+    \item En premier lieu il fallait que j'installe le moteur de règle. Que je comprenne bien son fonctionnement pour l'utiliser. 
+    \item Il fallait définir le calcul de la complémentarité Entre parrain et filleul. 
+    \item Ensuite il fallait créer la base de la page d'affichage de la recherche du matching, que je crée la route, ... 
+    \item Il fallait définir chacune des règles en fonction de si on cherche un matching pour un parrain ou pour un filleul. 
+    \item Puis il fallait récupérer les données pour pouvoir appliquer les règles, et ensuite afficher le détails du matching.
+    \item Mettre en place les règles.
+    \item Faire le calcul des points et l'affichage des résultats.
+    \item Trier les résultats et n'afficher que les 5 premières
+    \item Adapter le code pour refaire la rechercher sur les 5 premiers résultats pour avoir le premier parrain/filleul pour chaque filleul/parrain. 
+\end{itemize}
+
+L'installation du moteur de règle c'est faite sans soucis. La documentation est bien expliqué et je n'ai rencontré aucun problème. \\ \\
+Pour le calcul du matching et l'affichage j'ai réfléchi à différentes solution par rapport aux critères définit par Télémaque. Aucun des critères n'est disqualifiant. Mais certains ont un poids très important dans la décision du matching et d'autres beaucoup moins. 
+J'ai donc séparé les critères en 2 catégories : les critères de matching et les critères de complémentarité. Il me semblait important de bien les différencier. 
+Critères de matching : 
+\begin{itemize}
+    \item Le choix du genre du parrain (le filleul est-il du genre que le parrain souhaite) 
+    \item Le choix du genre du filleul (le parrain est-il du genre que le filleul souhaite) 
+    \item La correspondance de la zone géographique 
+    \item La correspondance de la filière du filleul 
+    \item La correspondance de l'autonomie du filleul et de la capacité du parrain à aller le chercher
+\end{itemize}
+Critères de complémentarité : 
+\begin{itemize}
+    \item Les centres d'intérêts en commun, allant jusqu'à 6 maximum
+    \item Les thèmes professionnels en commun, allant jusqu'à 4 maximum
+\end{itemize}
+Suite à ma réflexion j'ai proposé 2 types de calcul et d'affichage à Télémaque. Le premier est un calcul par points. Ainsi les critères valent un certain nombre de points de matching et permettent de définir une couleur de fond en fonction de ce nombre. Cela permet de voir rapidement si le matching est intéressant ou non. On obtient donc 5 points -> du vert foncé, 4 points -> du vert clair, 3 points -> du jaune, 2 points -> du orange, 1 point -> du rouge et 0 points pas de couleur. Ensuite les autres critères donnent un pourcentage de complémentarité qui permettra de savoir rapidement si le parrain et le filleul ont beaucoup de points commun. Voici un exemple schématique de visuel :
+\begin{center}
+		    \includegraphics[scale=0.5]{images/calcul_point_ex.png}	
+		\end{center}
+Le deuxième est un calcul par coefficient. Chaque critère en commun rapporte un point. Simplement les critères de matching ont un coefficient de 5 tandis que les autres ont un coefficient de 1. A partir de cela on peut calculer un pourcentage. En fonction du résultat nous pouvons faire différents types d'affichage. Soit une couleur en fonction de la tranche dans laquelle est le pourcentage, soit juste noter le pourcentage soit les deux ensemble. Voici un exemple schématique de visuel : 
+\begin{center}
+		    \includegraphics[scale=0.5]{images/calcul_coeff_ex.png}
+		\end{center}
+Télémaque a choisi le premier calcul, celui par points. C'est aussi celui que je trouvais le mieux, et le plus clair. 
+\\ \\
+La mise en place des règles et la récupération des résultats a été très simple. J'ai pu faire le calcul des points très facilement.
+\\ \\ 
+Pour l'affichage du matching et les calculs il me fallait beaucoup de données. L'utilisateur doit également pouvoir cliquer sur l'un des résultats pour avoir le détail du matching avec toutes les informations du parrain et du filleul. Pour éviter un transfert de données important d'une page à l'autre, ou de devoir récupérer à nouveau les informations déjà utilisées pour les calculs, j'ai préféré récupérer d'un coup toutes les informations nécessaires aux 2 pages. Cela me permet également d'éviter une perte de temps dans le chargement des données, car l'utilisateur risque de souvent revenir aux résultats puis consulter un matching en détail. En fonction de l'action en cours j'ai trouvé plus intéressant de changer simplement l'affichage. \\ \\
+Le résultat de la recherche et le détail du matching seront affichés sur la même page. De même l'affichage s'adapte sans problème en fonction de si l'on effectue une recherche sur un parrain ou sur un filleul. 
+\\ \\ 
+La dernière étape était de limiter l'affichage aux 5 premiers parrains/filleuls pour n'afficher qu'un top 5. Cela n'a pas été un problème grâce à la fonction rsort() j'ai pu trier mon tableau de données en fonction des points de matching puis des points de complémentarité pour les ex-aequo. 
+\\ \\ 
+Une fois que tout était en place et fonctionnel il ne restait plus qu'a récupérer les 5 premiers résultats, refaire la recherche pour chacun et récupérer le meilleur. Cette opération a nécéssité quelques modifications de mon code qui se sont révélées relativement simples. 
+\\ \\ 
+Voici un exemple d'affichage de résultat de matching : 
+\begin{center}
+		    \includegraphics[scale=0.5]{images/matching_2.png}
+		\end{center}
+		\textit{L'annexe 7 page 7 des annexes est un exemple d'affichage de détails du matching.}
+\subsection{Retours client et Fonctionnalités restantes}
+Les autres fonctionnalités que j'ai présenté en première partie n'ont pas encore été implémentées, mais elles le seront durant la suite de mon stage.
+\\ \\ 
+Les fonctionnalités suivantes ont été présentées à Télémaque et ont déjà fait l'objet d'un retour et de corrections : 
+\begin{itemize}
+    \item Formulaire étudiant 
+    \item Formulaire salarié 
+    \item Recherche
+    \item Profil parrain/salarié
+    \item Profil filleul
+\end{itemize}
+J'ai rencontré Télémaque dans les locaux de Norsys pour leur faire une présentation et une démo du site avec les fonctionnalités déjà disponibles. Comme le site est disponible uniquement en local sur mon ordinateur j'ai pris des captures d'écran de chaque fonctionnalité et de chaque subtilité ( questions du formulaire qui apparaissent en fonctions de certaines réponses) pour que Télémaque puisse y réfléchir, en discuter et me faire un retour. Tous les retours reçus ont été corrigés. 
+
+\subsection{Suivi du projet et délai}
+En regardant ma progression et le temps passé sur chaque tâche j'ai pu me rendre compte que j'avais 4 jours de retard sur le projet. Mais cela prend en compte les jours où j'ai été malade. En effet j'ai eu quelques jours d'abences pour raison de santé. Ce qui revient à me dire qu'au niveau délai : je suis dans les temps. On peut cependant remarquer que je n'ai pas géré mon temps sur chaque tâche de la manière initialement prévue. Il m'a fallu un certain temps d'apprentissage afin d'être réellement efficace sur symphony.
+
+\newpage
+\addcontentsline{toc}{section}{Conclusion}
+\section*{Conclusion}
+Grâce à ce stage j'ai pu avoir une vision nouvelle et concrète de la gestion de projet et de la relation client. Le cadre du projet et la responsabilité que Régis Fromentin m'a donnée m'ont permis de mieux me former et de mieux appréhender la gestion de projet. \\ \\
+Ce fut un stage très formateur dans tous les domaines où j'ai travaillé, mettant à l'épreuve une double compétence en gestion de projet et développement.  J'ai fait des découvertes formatices et motivantes.  \\ \\
+L'ambiance de travail était aussi très bonne, même si j'étais autonome sur le projet. Je sentais le soutien de mes collègues même ceux qui ne savaient pas forcément sur quoi je travaillais.  J'ai reçu énormément d'aide, ce qui m'a permis de trouver des solutions lorsque je rencontrais des problèmes. 
+\\ \\ 
+De plus, l'engouement de Télémaque pour le fruit de mon travail était motivant et très gratifiant. Je ne regrette pas d'avoir rallongé mon stage au-delà de la période exigée. 
+\\ \\
+J'ai donc le sentiment d'avoir appris au cours de ce stage et d'avoir progressé grâce à cette expérience. 
+\\ \\
+En conclusion, je ressors de ce stage avec une appréciation très positive. 
+\newpage
+\setcounter{page}{1}
+
+
+\fbox{%
+			\parbox{\textwidth}{%
+		
+					\begin{center}
+						\large \textsc{\textbf{ Annexes et sources }}
+					\end{center}
+					
+
+			}%
+		}%
+		\\ \\
+	\textbf{	Liste des sources : }
+	\begin{itemize}
+	\item OpenClassRoom, cours sur symfony : 
+
+	https://openclassrooms.com/courses/developpez-votre-site-web-avec-le-framework-symfony/symfony-un-framework-php
+	\item Documentation de Symfony :
+
+	http://symfony.com/doc/2.8/index.html
+	\item Documentation de Ruler  :
+
+	https://hoa-project.net/Fr/Literature/Hack/Ruler.html
+	\item Documentation de Bootstrap : http://getbootstrap.com/
+	\item Documentation d'AdminLTE :
+
+	https://adminlte.io/themes/AdminLTE/index2.html
+	\item Documentation de Twig : https://twig.sensiolabs.org/
+	\item Sélecteur de couleur : http://htmlcolorcodes.com/fr/
+	\end{itemize}
+	\newpage
+
+	\textbf{Annexe 1 : Organigramme de Norsys groupe}
+	\begin{center}
+		    \includegraphics[scale=0.6]{images/organigramme_group.png}	
+		\end{center}
+		\textbf{Annexe 2 : Organigramme de l'Institut Télémaque}
+	\begin{center}
+		    \includegraphics[scale=0.5]{images/organigramme_telemaque_1.png}	
+		    \includegraphics[scale=0.6]{images/organigramme_telemaque_2.png}
+		\end{center}
+	\textbf{Annexe 3 : Wireframe de la recherche}	
+		\begin{center}
+		    \includegraphics[scale=0.5]{images/wireframe3.png}	
+		\end{center}
+	\textbf{Annexe 4 : Fichier Profil.html.twig}
+	\begin{verbatim}
+{% extends ":Default:layout_search.html.twig" %}
+{% block stylesheets %}
+{# Bloc pour le CSS, on récupère la mise en forme 
+du parent pour garder le thème du site #}
+    {{ parent() }}
+    <style type="text/css" media="screen">
+        {% include 'MCTNMatcherBundle:CSS:profil.css.twig'
+        with{'dataPerson':dataPerson,'idPerson':idPerson} %}
+    </style>
+{% endblock %}
+
+{% block body_child %}
+{# Bloc du corps de la page #}
+    {% if typeProfil == 0  %}
+        <h1> Recherche > Profil Salarié</h1>
+        {% include 'MCTNMatcherBundle:Matching:ProfilParrain.html.twig'
+        with{'type':typeProfil,'dataPerson':dataPerson,
+        'idPerson':idPerson,'dataCI':dataCI,'dataTP':dataTP,
+        'dataZone':dataZone} %}
+    {% elseif typeProfil == 1 %}
+        <h1> Recherche > Profil Parrain</h1>
+        {% include 'MCTNMatcherBundle:Matching:ProfilParrain.html.twig'
+        with{'type':typeProfil,'dataPerson':dataPerson,
+        'idPerson':idPerson,'dataCI':dataCI,'dataTP':dataTP,
+        'dataMatching':dataMatching,'dataZone':dataZone} %}
+    {% elseif typeProfil == 2 %}
+        <h1> Recherche > Profil Filleul</h1>
+        {% include 'MCTNMatcherBundle:Matching:ProfilFilleul.html.twig'
+        with{'dataPerson':dataPerson,'idPerson':idPerson,
+        'dataCI':dataCI,'dataDispo':dataDispo,'dataTP':dataTP,
+        'dataMatching':dataMatching,'dataRS':dataRS} %}
+    {% endif %}
+{% endblock %}
+
+{% block javascripts %}
+{# Bloc du JavaScript #}
+    {{ parent() }}
+    {% if typeProfil == 0  %}
+        {% include 'MCTNMatcherBundle:js:profilParrain.js.twig' 
+        with{'idRegion':idRegion,'type':typeProfil,
+        'dataPerson':dataPerson,'idPerson':idPerson,
+        'dataCI':dataCI,'dataTP':dataTP,'dataZone':dataZone} %}
+    {% elseif typeProfil == 1 %}
+        {% include 'MCTNMatcherBundle:js:profilParrain.js.twig' 
+        with{'idRegion':idRegion,'type':typeProfil,
+        'dataPerson':dataPerson,'idPerson':idPerson,
+        'dataCI':dataCI,'dataTP':dataTP,
+        'dataMatching':dataMatching,'dataZone':dataZone} %}
+    {% elseif typeProfil == 2 %}
+        {% include 'MCTNMatcherBundle:js:profilFilleul.js.twig' 
+        with{'idRegion':idRegion,'type':typeProfil,
+        'dataPerson':dataPerson,'idPerson':idPerson,
+        'dataCI':dataCI,'dataTP':dataTP,
+        'dataMatching':dataMatching,'dataRS':dataRS} %}
+    {% endif %}
+{% endblock %}
+\end{verbatim}
+\textbf{Annexe 5 : Fonction du controleur pour la génération et l'enregistrement du formulaire salarié}
+\begin{verbatim}
+public function employeeAction(Request $request){
+    $salarie = new Salarie();
+    $form   = $this->get('form.factory')->create(SalarieType::class,
+    $salarie);
+    // Si la requête est en POST
+    if ($request->isMethod('POST')) {
+        // On fait le lien Requête <-> Formulaire
+        // À partir de maintenant, la variable $salarie contient 
+        // les valeurs entrées dans le formulaire par le visiteur
+        $form->handleRequest($request);
+        $nom= $form['nomSalarie']->getData();
+        $num =$form['numSalarie']->getData();
+        // On vérifie que les valeurs entrées sont correctes
+        if ($form->isValid()) {
+            if($salarie->getImage()!=null)
+                $salarie->getImage()->upload($nom,$num);
+            // On enregistre notre objet $salarie dans la base de
+            // données, par exemple
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($salarie);
+            $em->flush();
+            // On redirige vers la page de parrain
+            return $this->redirectToRoute('mctn_matcher_thanks_form');
+        }
+    }
+    // On passe la méthode createView() du formulaire à la vue
+    // afin qu'elle puisse afficher le formulaire toute seule
+    return $this->render('MCTNMatcherBundle:Form:Employee.html.twig',
+    array('form' => $form->createView(),));
+}
+
+\end{verbatim}
+\textbf{Annexe 6 : Code Ajax pour la récupération de la liste des zones en fonction de la région sélectionné dans le formulaire salarié}
+\begin{verbatim}
+$.ajax({
+    methode: "POST",
+    url: 'form_zones_region/'+valeur,
+}).done(function(data_zones){
+    $('#mctn_matcherbundle_salarie_zones > .checkbox')
+    .each(function(index) { 
+        $(this).remove(); 
+    });
+    str='';
+    $.each(JSON.parse(data_zones['data']),function(i,zone){
+        str=str+"<div class='checkbox'> <label class=''>" + 
+        "<input type='checkbox' 
+        id='mctn_matcherbundle_salarie_zones_'"+
+        zone.id+" name='mctn_matcherbundle_salarie[zones][]' 
+        value="+zone.id+" /> "+zone.numZone+" "+zone.nomZone+" 
+        </label> </div>";
+        $('#mctn_matcherbundle_salarie_zones').html(str);
+    });
+});
+
+\end{verbatim}
+\newpage
+\textbf{Annexe 7 : Exemple d'affiche du détail d'un matching}
+        \begin{center}
+		    \includegraphics[scale=0.5]{images/profil_matching.png}
+		\end{center}
+
+\end{document}
